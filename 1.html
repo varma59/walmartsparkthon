@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Call Test</title>
+  <style>
+    .center{
+        font-size: 18rem;
+        text-align: center;
+        margin: auto;
+        box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="center">API Call Example</h1>
+  <p id="result"></p>
+
+  <script>
+    // Define the API endpoint URL
+    const apiUrl = "https://varma59.azurewebsites.net/api/HttpTrigger1?code=yshP4RagfV4LH2tRlJsVAukkaSMgy_A-p7p0DVJtnfddAzFuEryGKQ==";
+
+    // Make an AJAX request to the API endpoint
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", apiUrl);
+    xhr.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        const response = JSON.parse(xhr.responseText);
+        document.getElementById("result").innerHTML = "Your IP address is " + response.ip;
+      }
+    };
+    xhr.send();
+  </script>
+</body>
+</html>
